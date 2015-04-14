@@ -6,11 +6,6 @@ class FormController < ApplicationController
 	end
 
 	def retrieve
-		# @response = []
-		# Form.each do |band|
-  # 		@response << band.location
-		# end
-		# puts response.to_json
 	 render json: {:locations => Location.all}
 	end
 
