@@ -1,42 +1,97 @@
 $(document).ready(function(){
 
   $('.add-special').on('click', function(e){
+    console.log('first event');
     addSpecial($(this).parent().children('.special-list')[0]);
+    $('.add-special').unbind();
     e.preventDefault();
   })
 
-  function addSpecial(specialList) {
-    var specialElm = $('.js-special')[0],
-      newElement = $(specialElm).clone()[0],
-      exit = $('<a href="#"> Delete Special</a>');
-
-    exit.on('click', function(e) {
-      $(newElement).remove();
-      e.preventDefault();
-    });
-
-    $(newElement).append(exit);
+  function createASpecial(isFirst) {
+    console.log('new spec');
+    var $li = $('<li class="special special-item js-special" ></li>');
+    var $descriptionInput = $('<input type="text" name="specialDescription" placeHolder="Special Description" class="field special js-special-description block" required>');
+    var $allDayLabel = $('<label for="allDay">All day?</label>');
+    var $allDayDropDown = $($('.js-special-allDay')[0]).clone();
+    var $starTimeLabel = $('<label for="startTime" class="block">Start Time</label>');
+    var $startTimeDrop = $($('.js-special-startTime')[0]).clone();
+    var $endTimeLabel = $('<label for="endTime">End Time</label>')[0];
+    var $endTimeDrop = $($('.js-special-endTime')[0]).clone();
+   
+    if (!isFirst) {
+      var $exit = $('<a href="#"> Delete Special</a>');
+    }
     
-    $(specialList).append(newElement);
+ 
+    $($li).append($descriptionInput);
+    $($li).append($allDayLabel);
+    $($li).append($allDayDropDown);
+    $($li).append($starTimeLabel);
+    $($li).append($startTimeDrop);
+    $($li).append($endTimeLabel);
+    $($li).append($endTimeDrop);
+    if (!isFirst) {
+      $($li).append($exit);
+
+      $exit.on('click', function(e) {
+        $($li).remove();
+       e.preventDefault();
+      });
+    }
+
+    return $li;
+  }
+
+  function addSpecial(specialList) {
+    var specialElm = $('.js-special')[0];
+    $(specialList).append(createASpecial(false));
   }
 
   $('.add-day').on('click', function(e){
-    var specialElm = $('.js-deal-day')[0];
-    specialElm = $(specialElm).clone()[0];
-    var specialList = $('.deal-day-list')[0];
-    var exit = $('<a href="#"> Delete Day</a>');
 
-    exit.on('click', function(e) {
-      $(specialElm).remove();
-      e.preventDefault();
-    });
-    $(specialElm).append(exit);
-    $(specialList).append(specialElm);
+    var $li = $('<li class="special special-item js-deal-day">');
+    var $label = $('<label for="day" class="block">Day of Week</label>');
+    var $dayDrop = $($('.deal-day-day')[0]).clone();
+    var $specialLabel = $('<h3>Special</h3>');
+    var $specialTypelabel = $('<label for="type" class="field special">Special Type </label>');
+    var $specialDrop = $($('.deal-day-type')[0]).clone();
+    var $specialList = $('<ul class="special special-list">');
+    $($specialList).append(createASpecial(true));
+    var $addSpecial = $('<a href="#" class="add-special">Add Special</a>');
+    var $exit = $('<a href="#"> Delete Day</a>');
+
+    $($li).append($label);
+    $($li).append($dayDrop);
+    $($li).append($specialLabel);
+    $($li).append($specialTypelabel);
+    $($li).append($specialDrop);
+    $($li).append($specialList);
+    $($li).append($exit);
+    $($li).append($addSpecial);
     
-    $(specialElm).children('.add-special').on('click', function(e) {
-      addSpecial($(this).parent().children('.special-list')[0]);
+    var $dealDayList = $('.deal-day-list');
+    $($dealDayList).append($li);
+
+    $exit.on('click', function(e) {
+      $($li).remove();
       e.preventDefault();
     });
+        
+    $($addSpecial).on('click', function(e) {
+      addSpecial($specialList);
+      e.preventDefault();
+    });
+
+    // $(specialElm).children('.add-special').on('click', function(e) {
+    //   addSpecial($(this).parent().children('.special-list')[0]);
+    //   e.preventDefault();
+    // });
+    // console.log( $(specialElm).last().children());
+    // $(specialElm).last().children('delete-special').on('click', function(e) {
+    //   console.log('touched');
+    //   $(this).parent().remove();
+    //   e.preventDefault();
+    // });
 
     e.preventDefault();
   });
@@ -91,7 +146,7 @@ $(document).ready(function(){
 
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:3000/form",
+        url: "http://127.0.0.1:3001/form",
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         data: location,
         dataType: "json",
@@ -101,7 +156,7 @@ $(document).ready(function(){
         },
         error: function(data){
           console.log(data);
-            alert("fail");
+            alert("Something went wrong cocs. Make sure all the fields are filled out. If they are and it still failed then let me know");
         }
     });
   });

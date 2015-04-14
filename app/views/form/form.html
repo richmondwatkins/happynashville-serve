@@ -7,15 +7,15 @@
   <body>
     <h3>Location</h3>
     <form name="form" id="form">
-      <input type="text" name="name" placeHolder="Location Name" class="field location location-name">
-      <input type="text" name="address" placeHolder="Location Address" class="field location location-address">
-      <input type="text" name="phoneNumber" placeHolder="Location Phone Number" class="field location location-phone">
-      <input type="text" name="website" placeHolder="Location Website" class="field location location-website"><br>
+      <input type="text" name="name" placeHolder="Location Name" class="field location location-name" required>
+      <input type="text" name="address" placeHolder="Location Address" class="field location location-address" required>
+      <input type="text" name="phoneNumber" placeHolder="Location Phone Number" class="field location location-phone" required>
+      <input type="text" name="website" placeHolder="Location Website" class="field location location-website" required><br>
       <h3>Deal Day</h3>
       <ul class="special deal-day-list">
         <li class="special special-item js-deal-day">
           <label for="day" class="block">Day of Week</label>
-          <select name="day" class="field special deal-day-day block">
+          <select name="day" class="field special deal-day-day block" required>
             <option>--------</option>
             <option value="1">Sunday</option>
             <option value="2">Monday</option>
@@ -27,7 +27,7 @@
           </select>
           <h3>Special</h3>
           <label for="type" class="field special">Special Type </label>
-          <select name="type" class="deal-day-type">
+          <select name="type" class="deal-day-type" required>
             <option>--------</option>
             <option value="0">Alcohol</option>
             <option value="1">Food</option>
@@ -35,9 +35,9 @@
           </select>
           <ul class="special special-list">
             <li class="special special-item js-special">
-              <input type="text" name="specialDescription" placeHolder="Special Description" class="field special js-special-description block">
+              <input type="text" name="specialDescription" placeHolder="Special Description" class="field special js-special-description block" required>
               <label for="allDay">All day?</label>
-              <select name="allDay" class="field special js-special-allDay">
+              <select name="allDay" class="field special js-special-allDay" required>
                 <option>--------</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
@@ -243,7 +243,7 @@
                 <option value="3:00 AM">3:00 AM</option>
               </select>
             </li>
-          </ul><a href="#" class="add-special">Add Special         </a>
+          </ul><a href="#" class="add-special">Add Special</a>
         </li>
       </ul><a href="#" class="add-day">Add Day</a>
       <input type="submit" value="Submit it Cocs!" class="submit">
