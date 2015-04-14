@@ -96,7 +96,8 @@ $(document).ready(function(){
         data: location,
         dataType: "json",
         success: function(data) {
-            alert(data.d);
+            alert('Nice job cocs!');
+            location.reload();
         },
         error: function(data){
           console.log(data);

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get '/' => 'form#form'
   post '/form' => 'form#save'
+  get '/retrieve' => 'form#retrieve'
   # Example resource route with options:
   #   resources :products do
   #     member do

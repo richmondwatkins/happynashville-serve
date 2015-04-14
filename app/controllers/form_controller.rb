@@ -2,14 +2,20 @@ class FormController < ApplicationController
 	require "net/http"
 	require "uri"
 
-	def test 
-		
+	def test 	
+	end
+
+	def retrieve
+		# @response = []
+		# Form.each do |band|
+  # 		@response << band.location
+		# end
+		# puts response.to_json
+	 render json: {:locations => Location.all}
 	end
 
 	def save
-		puts '============='
-		puts params[:name]
-		puts '=========+++++'
+
 		location = {
 			'name' => params[:name],
 			'slug' => makeSlug(params[:name].dup),
@@ -53,10 +59,16 @@ class FormController < ApplicationController
 
 		if coords 
 			location['coords'] = coords
-			location['rating'] = getGoogleRating(location)
+
+			googleInfo = getGoogleRating(location)
+
+			if googleInfo
+				location['rating'] = googleInfo['rating']
+
+			end
 		end
 
-		Form.create(
+		Location.create(
 			location: location
 		)
 
@@ -68,6 +80,7 @@ class FormController < ApplicationController
 	end
 
 	def getCoords(address) 
+		address = address.dup
 		address.gsub! ' ', '+'
 		url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+ address +'&key=AIzaSyBMh7KtIgBBbvY_p_jTIrwij824dN8dy6U'
 		response = Net::HTTP.get(URI.parse(url))
@@ -84,13 +97,29 @@ class FormController < ApplicationController
 	end
 
 	def getGoogleRating(location)
-		name = location['name']
+		name = location['name'].dup
 		name.gsub! ' ', '+'
 		url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+location["coords"]["lat"].to_s+','+location["coords"]["lng"].to_s+'&name='+name+'&radius=500&types=food|bar&key=AIzaSyBMh7KtIgBBbvY_p_jTIrwij824dN8dy6U'
 		response = Net::HTTP.get(URI.parse(URI.encode(url)))
-	
-		if response 
+		
+		jsonResults = JSON.parse(response)
+		nameMatches = []
 
+		if jsonResults['results']
+			jsonResults['results'].each { |i|
+				responseName = i['name'].downcase!
+				firstName = location['name'].dup.split(' ')[0].downcase!
+				if responseName.include? firstName 
+					nameMatches << {'rating' => i['rating'], 'googleInfo' => i }
+				end
+			}
+		end
+
+		if nameMatches.size > 0
+			nameMatches[0]
+
+		else
+			return nil
 		end
 	end
 
