@@ -99,3 +99,10 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+
+production:
+  sessions:
+    default:
+      database: happynashville_serve
+      hosts:
+        - '//heroku_app35847841:mafvnk7u6s434j3diss0otd05h@ds033499.mongolab.com:33499/heroku_app35847841?replicaSet=rs-ds033499'
