@@ -79,11 +79,8 @@ class FormController < ApplicationController
 			location: location
 		)
 
-	respond_to do |format|
-			msg = { :status => "ok", :message => "Success!", :html => "<b>...</b>" }
-			format.json  { render :json => msg } # don't do msg.to_json
-	end
-			
+	
+		render :json => [{ :success => "Success" }], :status => 200	
 	end
 
 	def getCoords(address) 
