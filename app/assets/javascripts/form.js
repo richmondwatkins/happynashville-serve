@@ -146,7 +146,7 @@ $(document).ready(function(){
 
     $.ajax({
         type: "POST",
-        url: "https://nameless-sea-7366.herokuapp.com/form",
+        url: "/form",
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         data: location,
         dataType: "json",
