@@ -3,7 +3,7 @@ $(document).ready(function(){
   $('.add-special').on('click', function(e){
     console.log('first event');
     addSpecial($(this).parent().children('.special-list')[0]);
-    $('.add-special').unbind();
+    // $('.add-special').unbind();
     e.preventDefault();
   })
 
@@ -19,7 +19,7 @@ $(document).ready(function(){
     var $endTimeDrop = $($('.js-special-endTime')[0]).clone();
    
     if (!isFirst) {
-      var $exit = $('<a href="#"> Delete Special</a>');
+      var $exit = $('<a href="#" class="delete delete-special"> Delete Special</a>');
     }
     
  
@@ -58,7 +58,7 @@ $(document).ready(function(){
     var $specialList = $('<ul class="special special-list">');
     $($specialList).append(createASpecial(true));
     var $addSpecial = $('<a href="#" class="add-special">Add Special</a>');
-    var $exit = $('<a href="#"> Delete Day</a>');
+    var $exit = $('<a href="#" class="delete"> Delete Day</a>');
 
     $($li).append($label);
     $($li).append($dayDrop);

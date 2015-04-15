@@ -26,7 +26,7 @@ a {
 }
 
 .add-special {
-  float: right;
+  float: left;
 }
 
 input[type=submit] {
@@ -39,8 +39,20 @@ input[type=submit] {
   border: 2px solid black;
   border-radius: 5px;
   padding: 30px;
+  margin-top: 15px;
 }
 
 .special-list {
   list-style-type: none;
+}
+
+.delete {
+  position: relative;
+  top: 20px;
+  color: red;
+  margin-left: 90%;
+}
+
+.delete-special {
+  margin-left: 85%;
 }
