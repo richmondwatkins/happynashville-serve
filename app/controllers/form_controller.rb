@@ -40,7 +40,7 @@ class FormController < ApplicationController
 		  		special['hourStart'] = getHour(tempSpecial['startTime'])
 		  		special['minuteStart'] = getMinute(tempSpecial['startTime'])
 		  		special['hourEnd'] = getHour(tempSpecial['endTime'])
-		  		special['minutEend'] = getMinute(tempSpecial['endTime'])
+		  		special['minutEnd'] = getMinute(tempSpecial['endTime'])
 		  	end
 
 		  	dealDay['specials'] << special
