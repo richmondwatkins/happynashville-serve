@@ -151,7 +151,7 @@ $(document).ready(function(){
         data: location,
         dataType: "json",
         success: function(data) {
-            alert('Nice job cocs!');
+            alert('Nice job cocs! I love you!');
             window.location.reload()
         },
         error: function(data){
