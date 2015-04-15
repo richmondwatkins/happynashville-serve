@@ -1,4 +1,21 @@
 class Location
   include Mongoid::Document
-  field :location, :type => Hash
+  
+  Mongoid.raise_not_found_error = false
+
+   field :name, :type => String
+
+  field :slug, :type => String
+
+  field :address, :type => String
+
+  field :phoneNumber, :type => String
+
+  field :website, :type => String
+
+  field :dealDays, :type => Array
+
+  field :coords, :type => Hash
+
+  field :rating, :type => Integer
 end

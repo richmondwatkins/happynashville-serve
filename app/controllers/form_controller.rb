@@ -10,7 +10,6 @@ class FormController < ApplicationController
 	end
 
 	def save
-		puts '======================'
 		location = {
 			'name' => params[:name],
 			'slug' => makeSlug(params[:name].dup),
@@ -19,8 +18,6 @@ class FormController < ApplicationController
 			'website' => params[:website],
 			'dealDays' => []
 		}
-
-		puts '======================'
 	
 		params['dealDays'].each{ |i| 
 			tempDay = i[1]
@@ -30,7 +27,7 @@ class FormController < ApplicationController
 				'day' => tempDay['day'],
 				'specials' => []
 			}
-		puts '======================'
+		
 		  tempDay['specials'].each { |j|
 		  	tempSpecial = j[1]
 
@@ -45,7 +42,7 @@ class FormController < ApplicationController
 		  		special['hourEnd'] = getHour(tempSpecial['endTime'])
 		  		special['minutEend'] = getMinute(tempSpecial['endTime'])
 		  	end
-		 puts '======================'
+
 		  	dealDay['specials'] << special
 		  }
 
@@ -53,7 +50,7 @@ class FormController < ApplicationController
 		}
 
 		coords = getCoords(location['address'])
-		puts '======================'
+		
 		if coords 
 			location['coords'] = coords
 
@@ -62,13 +59,22 @@ class FormController < ApplicationController
 			if googleInfo
 				location['rating'] = googleInfo['rating']
 
+				Google.create(
+					data:	googleInfo
+				)
 			end
 		end
 
-		Location.create(
-			location: location
-		)
-		puts '======================'
+		foundLocation = Location.find_by(name: location['name'])
+
+		if foundLocation != nil
+			foundLocation['dealDays'] += location['dealDays']
+			foundLocation.save
+		else
+			Location.create(
+				location
+			)
+		end
 	
 		render :json => [{ :success => "Success" }], :status => 200	
 	end
