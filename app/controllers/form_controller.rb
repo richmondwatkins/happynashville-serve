@@ -58,7 +58,10 @@ class FormController < ApplicationController
 
 			if googleInfo
 				location['rating'] = googleInfo['rating']
-
+				location['priceLevel'] = googleInfo['priceLevel']
+				puts '========================'
+				puts googleInfo['priceLevel']
+				puts '========================'
 				Google.create(
 					data:	googleInfo
 				)
@@ -101,7 +104,7 @@ class FormController < ApplicationController
 		name.gsub! ' ', '+'
 		url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+location["coords"]["lat"].to_s+','+location["coords"]["lng"].to_s+'&name='+name+'&radius=500&types=food|bar&key=AIzaSyBMh7KtIgBBbvY_p_jTIrwij824dN8dy6U'
 		response = Net::HTTP.get(URI.parse(URI.encode(url)))
-		
+		puts url
 		jsonResults = JSON.parse(response)
 		nameMatches = []
 
@@ -110,7 +113,10 @@ class FormController < ApplicationController
 				responseName = i['name'].downcase!
 				firstName = location['name'].dup.split(' ')[0].downcase!
 				if responseName.include? firstName 
-					nameMatches << {'rating' => i['rating'], 'googleInfo' => i }
+					nameMatches << {'rating' => i['rating'], 'googleInfo' => i, 'priceLevel' => i['price_level']}
+					puts '+++++++++++++++++++++++'
+					puts nameMatches
+					puts '+++++++++++++++++++++++'
 				end
 			}
 		end

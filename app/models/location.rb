@@ -1,6 +1,6 @@
 class Location
   include Mongoid::Document
-  
+
   Mongoid.raise_not_found_error = false
 
    field :name, :type => String
@@ -18,4 +18,6 @@ class Location
   field :coords, :type => Hash
 
   field :rating, :type => Integer
+
+  field :priceLevel, :type => Integer
 end
