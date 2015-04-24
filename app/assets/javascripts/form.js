@@ -17,13 +17,16 @@ $(document).ready(function(){
     var $startTimeDrop = $($('.js-special-startTime')[0]).clone();
     var $endTimeLabel = $('<label for="endTime">End Time</label>')[0];
     var $endTimeDrop = $($('.js-special-endTime')[0]).clone();
-   
+    var $specialTypeLabel = $('<label for="specialType" class="field special">Special Type </label>');
+    var $specialType = $($('.special-type')[0]).clone();
+    console.log($specialType);
     if (!isFirst) {
       var $exit = $('<a href="#" class="delete delete-special"> Delete Special</a>');
     }
-    
- 
+
     $($li).append($descriptionInput);
+    $($li).append($specialTypeLabel);
+    $($li).append($specialType);
     $($li).append($allDayLabel);
     $($li).append($allDayDropDown);
     $($li).append($starTimeLabel);
@@ -129,6 +132,7 @@ $(document).ready(function(){
         
         var special = {
           specialDescription : specialElm.children('.js-special-description').val(),
+          specialType : specialElm.children('.special-type').val(),
           allDay : specialElm.children('.js-special-allDay').val(),
           startTime : specialElm.children('.js-special-startTime').val(),
           endTime : specialElm.children('.js-special-endTime').val()
@@ -137,11 +141,8 @@ $(document).ready(function(){
         deal.specials.push(special);
       }
 
-      // console.log(deal);
       dealDaysArray.push(deal);
     });
-
-    console.log(location);
   
 
     $.ajax({

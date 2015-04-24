@@ -25,8 +25,7 @@
             <option value="6">Friday</option>
             <option value="7">Saturday</option>
           </select>
-          <h3>Special</h3>
-          <label for="type" class="field special">Special Type </label>
+          <label for="type" class="field special">Deal Day Type </label>
           <select name="type" class="deal-day-type" required>
             <option>--------</option>
             <option value="0">Alcohol</option>
@@ -34,7 +33,14 @@
             <option value="2">Both</option>
           </select>
           <ul class="special special-list">
+          <h3>Specials</h3>
             <li class="special special-item js-special">
+            <label for="specialType" class="field special">Special Type </label>
+            <select name="specialType" class="field special special-type" required>
+                <option>--------</option>
+                <option value="0">Alcohol</option>
+                <option value="1">Food</option>
+            </select>
               <input type="text" name="specialDescription" placeHolder="Special Description" class="field special js-special-description block" required>
               <label for="allDay">All day?</label>
               <select name="allDay" class="field special js-special-allDay" required>

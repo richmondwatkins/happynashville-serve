@@ -23,8 +23,8 @@ class FormController < ApplicationController
 			tempDay = i[1]
 
 			dealDay = {
-				'type' => tempDay['type'],
-				'day' => tempDay['day'],
+				'type' => tempDay['type'].to_i,
+				'day' => tempDay['day'].to_i,
 				'specials' => []
 			}
 		
@@ -33,7 +33,8 @@ class FormController < ApplicationController
 
 		  	special = {
 		  		'allDay' => getAllDay(tempSpecial['allDay']),
-		  		'specialDescription' => tempSpecial['specialDescription']
+		  		'specialDescription' => tempSpecial['specialDescription'],
+		  		'specialType' => tempSpecial['specialType']
 		  	}
 		 		
 		  	if special['allDay'] == 0
