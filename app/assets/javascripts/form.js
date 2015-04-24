@@ -153,7 +153,7 @@ $(document).ready(function(){
         dataType: "json",
         success: function(data) {
             alert('Nice job cocs! I love you!');
-            window.location.reload()
+            // window.location.reload()
         },
         error: function(data){
           console.log(data);
