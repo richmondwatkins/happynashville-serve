@@ -34,7 +34,7 @@ class FormController < ApplicationController
 		  	special = {
 		  		'allDay' => getAllDay(tempSpecial['allDay']),
 		  		'specialDescription' => tempSpecial['specialDescription'],
-		  		'specialType' => tempSpecial['specialType']
+		  		'type' => tempSpecial['specialType'].to_i
 		  	}
 		 		
 		  	if special['allDay'] == 0
