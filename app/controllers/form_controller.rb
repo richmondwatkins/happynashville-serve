@@ -6,7 +6,7 @@ class FormController < ApplicationController
 	end
 
 	def retrieve
-	 render json: {:locations => Location.all}
+	 render json: {version: 1, :locations => Location.all}
 	end
 
 	def save
