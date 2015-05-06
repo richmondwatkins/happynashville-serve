@@ -59,10 +59,13 @@ class FormController < ApplicationController
 
 			if googleInfo
 				location['rating'] = googleInfo['rating']
-				location['priceLevel'] = googleInfo['priceLevel']
-				puts '========================'
-				puts googleInfo['priceLevel']
-				puts '========================'
+
+				if googleInfo['priceLevel'] 
+					location['priceLevel'] = googleInfo['priceLevel']
+				else
+					location['priceLevel'] = 4
+				end
+
 				Google.create(
 					data:	googleInfo
 				)
