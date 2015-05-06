@@ -2,8 +2,8 @@ class FormController < ApplicationController
 	require "net/http"
 	require "uri"
 
-	@googleRatingAttm = 0
-	@googleCoords = 0
+	# @googleRatingAttm = 0
+	# @googleCoords = 0
 
 	def form 	
 	end
@@ -96,17 +96,19 @@ class FormController < ApplicationController
 		response = Net::HTTP.get(URI.parse(url))
 
 		jsonResults = JSON.parse(response)
-		if response['results']
+
+		if jsonResults['status'] != "ZERO_RESULTS"
 			{
 				'lat' => jsonResults['results'][0]['geometry']['location']['lat'], 
 				'lng' => jsonResults['results'][0]['geometry']['location']['lng']
 			}
 		else
-			 @googleCoords++
-
-			 if  @googleCoords < 5 
-			 		getCoords(address)
-			 end
+			 # @googleCoords++
+			 # puts self.googleCoords
+			 # if  @googleCoords < 5 
+			 # 		getCoords(address)
+			 # end
+			 nil
 		end
 	end
 
@@ -132,11 +134,12 @@ class FormController < ApplicationController
 			}
 
 		else 
-			@googleRatingAttm++
+			# @googleRatingAttm++
 
-			if @googleRatingAttm < 5
-				getGoogleRating(location)
-			end
+			# if @googleRatingAttm < 5
+			# 	getGoogleRating(location)
+			# end
+			nil
 		end
 
 		if nameMatches.size > 0
