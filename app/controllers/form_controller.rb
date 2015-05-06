@@ -102,11 +102,11 @@ class FormController < ApplicationController
 				'lng' => jsonResults['results'][0]['geometry']['location']['lng']
 			}
 		else
-			 # @googleCoords++
+			 @googleCoords++
 
-			 # if  @googleCoords < 5 
-			 # 		getCoords(address)
-			 # end
+			 if  @googleCoords < 5 
+			 		getCoords(address)
+			 end
 		end
 	end
 
@@ -132,11 +132,11 @@ class FormController < ApplicationController
 			}
 
 		else 
-			# @googleRatingAttm++
+			@googleRatingAttm++
 
-			# if @googleRatingAttm < 5
-			# 	getGoogleRating(location)
-			# end
+			if @googleRatingAttm < 5
+				getGoogleRating(location)
+			end
 		end
 
 		if nameMatches.size > 0
