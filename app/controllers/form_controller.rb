@@ -96,9 +96,9 @@ class FormController < ApplicationController
 	end
 
 	def getCoords(address) 
-		address = address.dup
-		address.gsub! ' ', '+'
-		url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+ address +'&key=AIzaSyBMh7KtIgBBbvY_p_jTIrwij824dN8dy6U'
+		addressDup = address.dup
+		addressDup.gsub! ' ', '+'
+		url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+ addressDup +'&key=AIzaSyBMh7KtIgBBbvY_p_jTIrwij824dN8dy6U'
 		response = Net::HTTP.get(URI.parse(url))
 
 		jsonResults = JSON.parse(response)
@@ -137,14 +137,12 @@ class FormController < ApplicationController
 				end
 			}
 
-		else
+		else 
 			@googleRatingAttm++
 
 			if @googleRatingAttm < 5
 				getGoogleRating(location)
 			end
-		else 
-
 		end
 
 		if nameMatches.size > 0
