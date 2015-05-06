@@ -2,6 +2,15 @@ class FormController < ApplicationController
 	require "net/http"
 	require "uri"
 
+	 attr_accessor :googleRatingAttm, :googleCoords
+
+  # If we don't specify coordinates, we start at 0.
+  def initialize(googleRatingAttm = 0, googleCoords = 0)
+    # Notice that `@` indicates instance variables.
+    @googleRatingAttm = googleRatingAttm
+    @googleCoords = googleCoords
+  end
+
 	def test 	
 	end
 
@@ -99,7 +108,11 @@ class FormController < ApplicationController
 				'lng' => jsonResults['results'][0]['geometry']['location']['lng']
 			}
 		else
-			nil 
+			 @googleCoords++
+
+			 if  @googleCoords < 5 
+			 		getCoords(address)
+			 end
 		end
 	end
 
@@ -123,6 +136,15 @@ class FormController < ApplicationController
 					puts '+++++++++++++++++++++++'
 				end
 			}
+
+		else
+			@googleRatingAttm++
+
+			if @googleRatingAttm < 5
+				getGoogleRating(location)
+			end
+		else 
+
 		end
 
 		if nameMatches.size > 0
