@@ -11,7 +11,7 @@ class FormController < ApplicationController
     @googleCoords = googleCoords
   end
 
-	def test 	
+	def form 	
 	end
 
 	def retrieve
