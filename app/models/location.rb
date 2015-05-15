@@ -13,7 +13,7 @@ class Location
 
   field :website, :type => String
 
-  field :isLocal, :type => Boolean
+  field :isLocal, :type => Integer
 
   field :dealDays, :type => Array
 

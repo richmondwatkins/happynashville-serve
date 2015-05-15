@@ -126,12 +126,19 @@ class FormController < ApplicationController
 			jsonResults['results'].each { |i|
 				responseName = i['name'].downcase!
 				firstName = location['name'].dup.split(' ')[0].downcase!
-				if responseName.include? firstName 
-					nameMatches << {'rating' => i['rating'], 'googleInfo' => i, 'priceLevel' => i['price_level']}
-					puts '+++++++++++++++++++++++'
-					puts nameMatches
-					puts '+++++++++++++++++++++++'
+
+				if responseName != nil && firstName != nil
+					if responseName.include? firstName 
+						nameMatches << {'rating' => i['rating'], 'googleInfo' => i, 'priceLevel' => i['price_level']}
+						puts '+++++++++++++++++++++++'
+						puts nameMatches
+						puts '+++++++++++++++++++++++'
+					end
+
+				else
+					nil
 				end
+				
 			}
 
 		else 
