@@ -3,7 +3,7 @@ class Location
 
   Mongoid.raise_not_found_error = false
 
-   field :name, :type => String
+  field :name, :type => String
 
   field :slug, :type => String
 
@@ -12,6 +12,8 @@ class Location
   field :phoneNumber, :type => String
 
   field :website, :type => String
+
+  field :isLocal, :type => Boolean
 
   field :dealDays, :type => Array
 

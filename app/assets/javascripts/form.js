@@ -119,6 +119,7 @@ $(document).ready(function(){
 			address : $('.location-address').val(),
 			phoneNumber : $('.location-phone').val(),
 			website : $('.location-website').val(),
+			isLocal : $('#isLocal').is(':checked'),
 			dealDays : dealDaysArray
 		};
 
@@ -146,8 +147,6 @@ $(document).ready(function(){
 					specials : specials
 				};
 			
-				
-					console.log(fSpecials.length);
 				for (var j = 0; j < fSpecials.length; j++) {
 					console.log(j);
 					var specialElm = $(fSpecials[j]);

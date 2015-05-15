@@ -11,6 +11,7 @@
       <input type="text" name="address" placeHolder="Location Address" class="field location location-address" required>
       <input type="text" name="phoneNumber" placeHolder="Location Phone Number" class="field location location-phone" required>
       <input type="text" name="website" placeHolder="Location Website" class="field location location-website"><br>
+      <span>Local Only</span><input type="checkbox" id="isLocal" name="isLocal" value="1">
       <h3>Deal Day</h3>
       <ul class="special deal-day-list">
         <li class="special special-item js-deal-day">
@@ -22,6 +23,8 @@
           <span>Thursday</span><input type="checkbox" class="day-of-week" name="thursday" value="5"><span>:::</span>
           <span>Friday</span><input type="checkbox" class="day-of-week" name="friday" value="6"><span>:::</span>
           <span>Saturday</span><input type="checkbox" class="day-of-week" name="saturday" value="7"><span>:::</span>
+          <br>
+          <br>
           <label for="type" class="field special">Deal Day Type </label>
           <select name="type" class="deal-day-type" required>
             <option>--------</option>
