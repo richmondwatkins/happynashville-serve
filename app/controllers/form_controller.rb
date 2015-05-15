@@ -19,7 +19,7 @@ class FormController < ApplicationController
 			'address' => params[:address],
 			'phoneNumber' => params[:phoneNumber],
 			'website' => params[:website],
-			'isLocal' => params[:isLocal],
+			'isLocal' => params[:isLocal].to_i,
 			'dealDays' => []
 		}
 	
