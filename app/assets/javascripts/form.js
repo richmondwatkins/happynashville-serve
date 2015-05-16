@@ -115,10 +115,10 @@ $(document).ready(function(){
 		var dealDaysArray = [];
 
 		var location = {
-			name : $('.location-name').val(),
-			address : $('.location-address').val(),
-			phoneNumber : $('.location-phone').val(),
-			website : $('.location-website').val(),
+			name : $('.location-name').val().trim(),
+			address : $('.location-address').val().trim(),
+			phoneNumber : $('.location-phone').val().trim(),
+			website : $('.location-website').val().trim(),
 			isLocal : $('#isLocal').is(':checked'),
 			dealDays : dealDaysArray
 		};
@@ -152,7 +152,7 @@ $(document).ready(function(){
 					var specialElm = $(fSpecials[j]);
 					
 					var special = {
-						specialDescription : specialElm.children('.js-special-description').val(),
+						specialDescription : specialElm.children('.js-special-description').val().trim(),
 						specialType : specialElm.children('.special-type').val(),
 						allDay : specialElm.children('.js-special-allDay').val(),
 						startTime : specialElm.children('.js-special-startTime').val(),
