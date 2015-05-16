@@ -136,7 +136,7 @@ class FormController < ApplicationController
 					end
 
 				else
-					nil
+					0
 				end
 				
 			}
@@ -147,14 +147,14 @@ class FormController < ApplicationController
 			# if @googleRatingAttm < 5
 			# 	getGoogleRating(location)
 			# end
-			nil
+			0
 		end
 
 		if nameMatches.size > 0
 			nameMatches[0]
 
 		else
-			return nil
+			return 0
 		end
 	end
 
