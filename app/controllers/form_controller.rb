@@ -38,6 +38,8 @@ class FormController < ApplicationController
 		  	special = {
 		  		'allDay' => getAllDay(tempSpecial['allDay']),
 		  		'specialDescription' => tempSpecial['specialDescription'],
+		  		'specialPrice' => tempSpecial['specialPrice'],
+		  		'specialItem' => tempSpecial['specialItem'],
 		  		'type' => tempSpecial['specialType'].to_i
 		  	}
 		 		

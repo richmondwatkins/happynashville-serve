@@ -38,9 +38,16 @@
             <label for="specialType" class="field special">Special Type </label>
             <select name="specialType" class="field special special-type" required>
                 <option>--------</option>
-                <option value="0">Alcohol</option>
-                <option value="1">Food</option>
+                <option value="0">Draft</option>
+                <option value="1">Bottle</option>
+                <option value="2">Cocktail/Martini</option>
+                <option value="3">Well</option>
+                <option value="4">Wine</option>
+                <option value="5">Margarita</option>
+                <option value="6">Food</option>
             </select>
+             <input type="text" name="specialPrice" placeHolder="Special Price" class="field special js-special-price block" required>
+             <input type="text" name="specialItem" placeHolder="Special Item" class="field special js-special-item block" required>
               <input type="text" name="specialDescription" placeHolder="Special Description" class="field special js-special-description block" required>
               <label for="allDay">All day?</label>
               <select name="allDay" class="field special js-special-allDay" required>

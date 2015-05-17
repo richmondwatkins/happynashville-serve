@@ -9,6 +9,8 @@ $(document).ready(function(){
 
 	function createASpecial(isFirst) {
 		var $li = $('<li class="special special-item js-special" ></li>');
+		var $priceInput = $('<input type="text" name="specialPrice" placeHolder="Special Price" class="field special js-special-price block" required>');
+		var $itemInput = $('<input type="text" name="specialItem" placeHolder="Special Item" class="field special js-special-item block" required>');
 		var $descriptionInput = $('<input type="text" name="specialDescription" placeHolder="Special Description" class="field special js-special-description block" required>');
 		var $allDayLabel = $('<label for="allDay">All day?</label>');
 		var $allDayDropDown = $($('.js-special-allDay')[0]).clone();
@@ -23,9 +25,11 @@ $(document).ready(function(){
 			var $exit = $('<a href="#" class="delete delete-special">Delete Special</a>');
 		}
 
-		$($li).append($descriptionInput);
 		$($li).append($specialTypeLabel);
 		$($li).append($specialType);
+		$($li).append($priceInput);
+		$($li).append($itemInput);
+		$($li).append($descriptionInput);
 		$($li).append($allDayLabel);
 		$($li).append($allDayDropDown);
 		$($li).append($starTimeLabel);
@@ -152,6 +156,8 @@ $(document).ready(function(){
 					var specialElm = $(fSpecials[j]);
 					
 					var special = {
+						specialPrice : specialElm.children('.js-special-price').val().trim(),
+						specialItem : specialElm.children('.js-special-item').val().trim(),
 						specialDescription : specialElm.children('.js-special-description').val().trim(),
 						specialType : specialElm.children('.special-type').val(),
 						allDay : specialElm.children('.js-special-allDay').val(),
