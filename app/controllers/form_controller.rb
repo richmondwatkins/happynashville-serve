@@ -69,7 +69,7 @@ class FormController < ApplicationController
 				if googleInfo['priceLevel'] 
 					location['priceLevel'] = googleInfo['priceLevel']
 				else
-					location['priceLevel'] = 4
+					location['priceLevel'] = 0
 				end
 
 				Google.create(
