@@ -11,7 +11,6 @@
       <input type="text" name="address" placeHolder="Location Address" class="field location location-address" required>
       <input type="text" name="phoneNumber" placeHolder="Location Phone Number" class="field location location-phone" required>
       <input type="text" name="website" placeHolder="Location Website" class="field location location-website"><br>
-      <span>Local Only</span><input type="checkbox" id="isLocal" name="isLocal" value="1">
       <h3>Deal Day</h3>
       <ul class="special deal-day-list">
         <li class="special special-item js-deal-day">
@@ -25,31 +24,24 @@
           <span>Saturday</span><input type="checkbox" class="day-of-week" name="saturday" value="7"><span>:::</span>
           <br>
           <br>
-          <label for="type" class="field special">Deal Day Type </label>
-          <select name="type" class="deal-day-type" required>
-            <option>--------</option>
-            <option value="0">Alcohol</option>
-            <option value="1">Food</option>
-            <option value="2">Both</option>
-          </select>
           <ul class="special special-list">
           <h3>Specials</h3>
             <li class="special special-item js-special">
             <label for="specialType" class="field special">Special Type </label>
             <select name="specialType" class="field special special-type" required>
                 <option>--------</option>
-                <option value="0">Draft</option>
-                <option value="1">Bottle</option>
+                <option value="0">Draft Beer / Pitcher / Pint</option>
+                <option value="1">Bottled Beer / Bottles / Local Beer / Craft Beer</option>
                 <option value="2">Cocktail/Martini</option>
-                <option value="3">Well</option>
-                <option value="4">Wine</option>
+                <option value="3">Well / Misc.</option>
+                <option value="4">Wine / Wine Glass / House Wine</option>
                 <option value="5">Margarita</option>
-                <option value="6">Food</option>
-                <option value="7">Shots</option>
+                <option value="6">Food / Appetizers</option>
+                <option value="7">Shots / Bombers / Shooters</option>
                 <option value="8">Sangria</option>
-                <option value="9">Tall Boys</option>
+                <option value="9">Tall Boys / Cans</option>
                 <option value="10">Wine Bottles</option>
-                <option value="11">Mimosa</option>
+                <option value="11">Mimosa / Champagne</option>
                 <option value="12">Bloody Mary</option>
             </select>
              <input type="text" name="specialPrice" placeHolder="Special Price" class="field special js-special-price block" required>

@@ -19,7 +19,6 @@ class FormController < ApplicationController
 			'address' => params[:address],
 			'phoneNumber' => params[:phoneNumber],
 			'website' => params[:website],
-			'isLocal' => params[:isLocal].to_i,
 			'dealDays' => []
 		}
 	
@@ -27,7 +26,6 @@ class FormController < ApplicationController
 			tempDay = i[1]
 
 			dealDay = {
-				'type' => tempDay['type'].to_i,
 				'day' => tempDay['day'].to_i,
 				'specials' => []
 			}
@@ -138,7 +136,7 @@ class FormController < ApplicationController
 					end
 
 				else
-					nil
+					0
 				end
 				
 			}
@@ -149,14 +147,13 @@ class FormController < ApplicationController
 			# if @googleRatingAttm < 5
 			# 	getGoogleRating(location)
 			# end
-			nil
+			0
 		end
 
 		if nameMatches.size > 0
 			nameMatches[0]
-
 		else
-			return nil
+			return 0
 		end
 	end
 

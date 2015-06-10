@@ -65,8 +65,6 @@ $(document).ready(function(){
 		var $friday = $('<span>Friday</span><input type="checkbox" class="day-of-week" name="friday" value="6"><span>:::</span>');
 		var $saturday = $('<span>Saturday</span><input type="checkbox" class="day-of-week" name="saturday" value="7"><span>:::</span>');
 		var $specialLabel = $('<h3>Special</h3>');
-		var $specialTypelabel = $('<label for="type" class="field special">Special Type </label>');
-		var $specialDrop = $($('.deal-day-type')[0]).clone();
 		var $specialList = $('<ul class="special special-list">');
 		$($specialList).append(createASpecial(true));
 		var $addSpecial = $('<a href="#" class="add-special">Add Special</a>');
@@ -81,8 +79,6 @@ $(document).ready(function(){
 		$($li).append($friday);
 		$($li).append($saturday);
 		$($li).append($specialLabel);
-		$($li).append($specialTypelabel);
-		$($li).append($specialDrop);
 		$($li).append($specialList);
 		$($li).append($exit);
 		$($li).append($addSpecial);
@@ -123,7 +119,6 @@ $(document).ready(function(){
 			address : $('.location-address').val().trim(),
 			phoneNumber : $('.location-phone').val().trim(),
 			website : $('.location-website').val().trim(),
-			isLocal : $('#isLocal').is(':checked'),
 			dealDays : dealDaysArray
 		};
 
@@ -147,7 +142,6 @@ $(document).ready(function(){
 			for (var k = 0; k < checkedDays.length; k++) {
 				var deal = {
 					day : checkedDays[k],
-					type : dealDay.children('.deal-day-type').val(),
 					specials : specials
 				};
 			
